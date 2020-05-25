@@ -22,13 +22,13 @@ abstract class PermissionHolder {
         for (perm in getPermissions()) {
             if (PermissionNode(perm.substring(if (perm.startsWith("-")) 1 else 0)).test(permission.getPermissionRaw())) {
                 return if (perm.startsWith("-")) {
-                    DENY(ResultCause.GROUP, this)
+                    Deny(ResultCause.GROUP, this)
                 } else {
-                    ALLOW(ResultCause.GROUP, this)
+                    Allow(ResultCause.GROUP, this)
                 }
             }
         }
-        return NEUTRAL()
+        return Neutral()
     }
 
     enum class HolderType {

@@ -2,6 +2,6 @@ package org.cascadebot.permissions
 
 sealed class PermissionsResult(val cause: ResultCause?, val causeObject: Any?)
 
-class ALLOW(cause: ResultCause? = null, causeObject: Any? = null) : PermissionsResult(cause, causeObject)
-class DENY(cause: ResultCause? = null, causeObject: Any? = null) : PermissionsResult(cause, causeObject)
-class NEUTRAL : PermissionsResult(null, null)
+class Allow(cause: ResultCause? = null, causeObject: Any? = null) : PermissionsResult(cause, causeObject)
+class Deny(cause: ResultCause? = null, causeObject: Any? = null) : PermissionsResult(cause, causeObject)
+class Neutral : PermissionsResult(null, null)

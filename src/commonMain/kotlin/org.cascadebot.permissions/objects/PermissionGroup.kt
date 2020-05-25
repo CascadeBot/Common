@@ -3,11 +3,11 @@ package org.cascadebot.permissions.objects
 import kotlin.jvm.Synchronized
 import kotlin.random.Random
 
-class PermissionsGroup(val name: String) : PermissionHolder() {
+class PermissionGroup(val name: String) : PermissionHolder() {
 
     // Private constructor for Mongo
     @Suppress("unused")
-    private constructor()
+    private constructor() : this("")
 
     private val characterPool = "abcdefghijkmnopqrstuvwxyzACDEFHJKLMNPRSTUVWXYZ123467890"
 

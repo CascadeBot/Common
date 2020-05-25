@@ -28,3 +28,7 @@ enum class PermissionAction {
     DENY
 
 }
+
+enum class PermissionMode {
+    HIERARCHICAL, MOST_RESTRICTIVE
+}
