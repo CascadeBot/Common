@@ -2,10 +2,12 @@ package org.cascadebot.common.permissions
 
 import org.cascadebot.common.permissions.objects.PermissionGroup
 import org.cascadebot.common.permissions.objects.PermissionUser
+import kotlin.js.JsName
 
 
-class PermissionsEvaluator {
+object PermissionsEvaluator {
 
+    @JsName("evalPermission")
     fun evalPermission(
         context: PermissionEvalContext,
         permission: CascadePermission

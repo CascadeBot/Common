@@ -11,7 +11,7 @@ import org.cascadebot.common.permissions.ResultCause
 abstract class PermissionHolder {
 
     private val permissions: MutableSet<String> = mutableSetOf()
-    abstract val type: HolderType?
+    abstract val type: HolderType
 
     fun getPermissions(): Set<String> {
         return permissions.toSet()
@@ -29,10 +29,14 @@ abstract class PermissionHolder {
         for (perm in getPermissions()) {
             if (PermissionNode(perm.substring(if (perm.startsWith("-")) 1 else 0))
                     .invoke(permission.permissionRaw)) {
+                val cause = when (type) {
+                    HolderType.GROUP -> ResultCause.GROUP
+                    HolderType.USER -> ResultCause.USER
+                }
                 return if (perm.startsWith("-")) {
-                    Deny(ResultCause.GROUP, this)
+                    Deny(cause, this)
                 } else {
-                    Allow(ResultCause.GROUP, this)
+                    Allow(cause, this)
                 }
             }
         }
