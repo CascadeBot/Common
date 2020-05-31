@@ -1,12 +1,12 @@
-package org.cascadebot.shared.permissions.objects
+package org.cascadebot.common.permissions.objects
 
-import org.cascadebot.shared.permissions.Allow
-import org.cascadebot.shared.permissions.CascadePermission
-import org.cascadebot.shared.permissions.Deny
-import org.cascadebot.shared.permissions.Neutral
-import org.cascadebot.shared.permissions.PermissionNode
-import org.cascadebot.shared.permissions.PermissionsResult
-import org.cascadebot.shared.permissions.ResultCause
+import org.cascadebot.common.permissions.Allow
+import org.cascadebot.common.permissions.CascadePermission
+import org.cascadebot.common.permissions.Deny
+import org.cascadebot.common.permissions.Neutral
+import org.cascadebot.common.permissions.PermissionNode
+import org.cascadebot.common.permissions.PermissionsResult
+import org.cascadebot.common.permissions.ResultCause
 
 abstract class PermissionHolder {
 

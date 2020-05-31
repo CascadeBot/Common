@@ -1,6 +1,6 @@
-package org.cascadebot.shared
+package org.cascadebot.common
 
-import org.cascadebot.shared.permissions.DiscordPermission
+import org.cascadebot.common.permissions.DiscordPermission
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

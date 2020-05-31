@@ -1,4 +1,4 @@
-rootProject.name = 'PermissionsShared'
+rootProject.name = 'Common'
 
 
 enableFeaturePreview('GRADLE_METADATA')

@@ -1,6 +1,6 @@
-package org.cascadebot.shared.permissions
+package org.cascadebot.common.permissions
 
-import org.cascadebot.shared.Module
+import org.cascadebot.common.Module
 
 class CascadePermission private constructor(
     val permissionRaw: String,

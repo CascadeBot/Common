@@ -1,4 +1,4 @@
-package org.cascadebot.shared.permissions
+package org.cascadebot.common.permissions
 
 // All credit to the FlareBot project for this file
 // https://github.com/FlareBot/FlareBot/blob/master/src/main/java/stream/flarebot/flarebot/permissions/PermissionNode.java

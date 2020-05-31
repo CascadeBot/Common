@@ -1,6 +1,6 @@
-package org.cascadebot.shared
+package org.cascadebot.common
 
-import org.cascadebot.shared.permissions.PermissionNode
+import org.cascadebot.common.permissions.PermissionNode
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

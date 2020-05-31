@@ -1,4 +1,4 @@
-package org.cascadebot.shared.permissions
+package org.cascadebot.common.permissions
 
 enum class ResultCause {
     /**

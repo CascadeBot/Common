@@ -1,7 +1,7 @@
-package org.cascadebot.shared.permissions
+package org.cascadebot.common.permissions
 
-import org.cascadebot.shared.permissions.objects.PermissionGroup
-import org.cascadebot.shared.permissions.objects.PermissionUser
+import org.cascadebot.common.permissions.objects.PermissionGroup
+import org.cascadebot.common.permissions.objects.PermissionUser
 
 
 class PermissionsEvaluator {

@@ -1,4 +1,4 @@
-package org.cascadebot.shared
+package org.cascadebot.common
 
 enum class Module(vararg flags: ModuleFlag) {
 

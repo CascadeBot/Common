@@ -1,4 +1,4 @@
-package org.cascadebot.shared.permissions
+package org.cascadebot.common.permissions
 
 /**
  * Security levels defined by Role IDs or User IDs, A level can be defined by an unlimited amount of roles

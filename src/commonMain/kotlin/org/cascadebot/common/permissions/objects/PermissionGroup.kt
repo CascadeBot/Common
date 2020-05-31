@@ -1,4 +1,4 @@
-package org.cascadebot.shared.permissions.objects
+package org.cascadebot.common.permissions.objects
 
 import kotlin.jvm.Synchronized
 import kotlin.random.Random
