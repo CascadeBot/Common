@@ -1,8 +1,15 @@
-package org.cascadebot.permissions.objects
+package org.cascadebot.shared.permissions.objects
 
-import org.cascadebot.permissions.*
+import org.cascadebot.shared.permissions.Allow
+import org.cascadebot.shared.permissions.CascadePermission
+import org.cascadebot.shared.permissions.Deny
+import org.cascadebot.shared.permissions.Neutral
+import org.cascadebot.shared.permissions.PermissionNode
+import org.cascadebot.shared.permissions.PermissionsResult
+import org.cascadebot.shared.permissions.ResultCause
 
 abstract class PermissionHolder {
+
     private val permissions: MutableSet<String> = mutableSetOf()
     abstract val type: HolderType?
 
@@ -20,7 +27,8 @@ abstract class PermissionHolder {
 
     fun evaluatePermission(permission: CascadePermission): PermissionsResult {
         for (perm in getPermissions()) {
-            if (PermissionNode(perm.substring(if (perm.startsWith("-")) 1 else 0)).test(permission.getPermissionRaw())) {
+            if (PermissionNode(perm.substring(if (perm.startsWith("-")) 1 else 0))
+                    .invoke(permission.permissionRaw)) {
                 return if (perm.startsWith("-")) {
                     Deny(ResultCause.GROUP, this)
                 } else {
@@ -34,4 +42,5 @@ abstract class PermissionHolder {
     enum class HolderType {
         GROUP, USER
     }
+
 }

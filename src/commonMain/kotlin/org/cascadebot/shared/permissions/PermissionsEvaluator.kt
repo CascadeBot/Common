@@ -1,7 +1,7 @@
-package org.cascadebot.permissions
+package org.cascadebot.shared.permissions
 
-import org.cascadebot.permissions.objects.PermissionGroup
-import org.cascadebot.permissions.objects.PermissionUser
+import org.cascadebot.shared.permissions.objects.PermissionGroup
+import org.cascadebot.shared.permissions.objects.PermissionUser
 
 
 class PermissionsEvaluator {
@@ -12,11 +12,24 @@ class PermissionsEvaluator {
     ): PermissionsResult {
 
         // This allows developers and owners to go into guilds and fix problems
-        if (SecurityHandler.isAuthorised(context.userLevel, SecurityLevel.DEVELOPER)) {
-            return Allow(ResultCause.OFFICIAL, SecurityLevel.DEVELOPER)
+        if (SecurityHandler.isAuthorised(
+                context.userLevel,
+                SecurityLevel.DEVELOPER
+            )
+        ) {
+            return Allow(
+                ResultCause.OFFICIAL,
+                SecurityLevel.DEVELOPER
+            )
         }
-        if (SecurityHandler.isAuthorised(context.userLevel, SecurityLevel.CONTRIBUTOR) && context.developmentBot) {
-            return Allow(ResultCause.OFFICIAL, SecurityLevel.CONTRIBUTOR)
+        if (SecurityHandler.isAuthorised(
+                context.userLevel,
+                SecurityLevel.CONTRIBUTOR
+            ) && context.developmentBot) {
+            return Allow(
+                ResultCause.OFFICIAL,
+                SecurityLevel.CONTRIBUTOR
+            )
         }
         // If the user is owner then they have all perms, obsv..
         if (context.isUserOwner) return Allow(ResultCause.GUILD)
@@ -27,7 +40,8 @@ class PermissionsEvaluator {
         // Get all user groups that are directly assigned and the groups assigned through roles
         val userGroups: List<PermissionGroup> = getUserGroups(context.user, context.groups, context.memberRoles)
         var result: PermissionsResult = getDefaultAction(permission)
-        var evaluatedResult: PermissionsResult = Neutral()
+        var evaluatedResult: PermissionsResult =
+            Neutral()
         if (context.permissionMode === PermissionMode.MOST_RESTRICTIVE) {
             evaluatedResult = evaluateMostRestrictiveMode(context.user, userGroups, permission)
         } else if (context.permissionMode === PermissionMode.HIERARCHICAL) {
@@ -40,7 +54,10 @@ class PermissionsEvaluator {
         // Discord permissions will only allow a permission if is not already allowed or denied.
         // It will not override Cascade permissions!
         if (result is Neutral && hasDiscordPermissions(context.userPermissions, permission.discordPerm)) {
-            result = Allow(ResultCause.DISCORD, permission.discordPerm)
+            result = Allow(
+                ResultCause.DISCORD,
+                permission.discordPerm
+            )
         }
         return result
     }
@@ -76,7 +93,8 @@ class PermissionsEvaluator {
         userGroups: List<PermissionGroup>,
         permission: CascadePermission
     ): PermissionsResult {
-        var result: PermissionsResult = Neutral()
+        var result: PermissionsResult =
+            Neutral()
         // Loop through the groups backwards to preserve hierarchy; groups higher up override lower groups.
         for (group in userGroups.reversed()) {
             val groupResult: PermissionsResult = group.evaluatePermission(permission)
@@ -94,7 +112,9 @@ class PermissionsEvaluator {
 
     private fun getDefaultAction(permission: CascadePermission): PermissionsResult {
         // A default permission will never explicitly deny a permission.
-        return if (permission.defaultPerm) Allow(ResultCause.DEFAULT) else Deny(ResultCause.DEFAULT)
+        return if (permission.defaultPerm) Allow(ResultCause.DEFAULT) else Deny(
+            ResultCause.DEFAULT
+        )
     }
 
     private fun getUserGroups(
@@ -107,7 +127,7 @@ class PermissionsEvaluator {
 
         groups.filter { group ->
             group.getRoleIds().any { id -> memberRoles.contains(id) }
-        }.forEach(userGroups::add)
+        }.forEach { userGroups.add(it) }
         return userGroups
     }
 

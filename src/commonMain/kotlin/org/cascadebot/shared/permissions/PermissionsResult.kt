@@ -1,4 +1,4 @@
-package org.cascadebot.permissions
+package org.cascadebot.shared.permissions
 
 sealed class PermissionsResult(val cause: ResultCause?, val causeObject: Any?)
 

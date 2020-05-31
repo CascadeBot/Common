@@ -1,4 +1,4 @@
-package org.cascadebot.permissions.objects
+package org.cascadebot.shared.permissions.objects
 
 import kotlin.jvm.Synchronized
 

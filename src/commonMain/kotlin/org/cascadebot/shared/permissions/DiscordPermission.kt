@@ -1,4 +1,4 @@
-package org.cascadebot.permissions
+package org.cascadebot.shared.permissions
 
 enum class DiscordPermission(val bitwiseOffset: Int) {
 
