@@ -1,5 +1,5 @@
 {
-  "name": "common",
+  "name": "@cascadebot/common",
   "version": "1.0.0",
   "description": "This repository contains shared code that is both needed in Javascript and Java for the Bot, Dashboard and Stapler.",
   "main": "bin/build/cascade-common.js",
