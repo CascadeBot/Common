@@ -6,7 +6,7 @@ name: Common Package Push
 on:
   push:
     branches: [ master ]
-    tags: *
+    tags: '*'
 
 jobs:
   build:
