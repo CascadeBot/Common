@@ -17,9 +17,6 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-    - uses: eskatos/gradle-command-action@v1
-      with:
-        arguments: jstest build
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -27,6 +24,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
         scope: '@cascadebot'
     - run: npm ci
+    - run: npm build
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
