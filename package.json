@@ -1,6 +1,6 @@
 {
   "name": "@cascadebot/common",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This repository contains shared code that is both needed in Javascript and Java for the Bot, Dashboard and Stapler.",
   "main": "dist/Common.js",
   "dependencies": {
@@ -12,6 +12,11 @@
   "scripts": {
     "build": "./gradlew jstest build && mkdir dist && node_modules/.bin/uglifyjs build/js/packages/Common/kotlin/Common.js -c -m -o dist/Common.js"
   },
+  "files": [
+    "/dist",
+    "/src/commonMain",
+    "/src/jsMain"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CascadeBot/Common.git"
