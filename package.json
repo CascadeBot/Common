@@ -1,6 +1,6 @@
 {
   "name": "@cascadebot/common",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "This repository contains shared code that is both needed in Javascript and Java for the Bot, Dashboard and Stapler.",
   "main": "dist/Common.js",
   "dependencies": {
