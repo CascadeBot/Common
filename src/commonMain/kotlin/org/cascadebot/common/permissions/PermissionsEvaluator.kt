@@ -14,7 +14,8 @@ object PermissionsEvaluator {
     ): PermissionsResult {
 
         // This allows developers and owners to go into guilds and fix problems
-        if (SecurityHandler.isAuthorised(
+        if (context.userLevel != null &&
+            SecurityHandler.isAuthorised(
                 context.userLevel,
                 SecurityLevel.DEVELOPER
             )
@@ -24,10 +25,13 @@ object PermissionsEvaluator {
                 SecurityLevel.DEVELOPER
             )
         }
-        if (SecurityHandler.isAuthorised(
+        if (context.userLevel != null &&
+            SecurityHandler.isAuthorised(
                 context.userLevel,
                 SecurityLevel.CONTRIBUTOR
-            ) && context.developmentBot) {
+            ) &&
+            context.developmentBot
+        ) {
             return Allow(
                 ResultCause.OFFICIAL,
                 SecurityLevel.CONTRIBUTOR
@@ -140,7 +144,7 @@ class PermissionEvalContext(
     val permissionMode: PermissionMode,
     val userId: Long,
     val user: PermissionUser,
-    val userLevel: SecurityLevel,
+    val userLevel: SecurityLevel?,
     val groups: List<PermissionGroup>,
     val userPermissions: Set<DiscordPermission>,
     val memberRoles: List<Long>,
