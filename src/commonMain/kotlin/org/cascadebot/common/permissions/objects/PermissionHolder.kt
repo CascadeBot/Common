@@ -7,20 +7,24 @@ import org.cascadebot.common.permissions.Neutral
 import org.cascadebot.common.permissions.PermissionNode
 import org.cascadebot.common.permissions.PermissionsResult
 import org.cascadebot.common.permissions.ResultCause
+import kotlin.js.JsName
 
 abstract class PermissionHolder {
 
     private val permissions: MutableSet<String> = mutableSetOf()
     abstract val type: HolderType
 
+    @JsName("getPermissions")
     fun getPermissions(): Set<String> {
         return permissions.toSet()
     }
 
+    @JsName("addPermission")
     fun addPermission(permission: String): Boolean {
         return permissions.add(permission)
     }
 
+    @JsName("removePermission")
     fun removePermission(permission: String): Boolean {
         return permissions.remove(permission)
     }

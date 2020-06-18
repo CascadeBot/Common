@@ -1,5 +1,7 @@
 package org.cascadebot.common.permissions
 
+import kotlin.js.JsName
+
 enum class DiscordPermission(val bitwiseOffset: Int) {
 
     CREATE_INSTANT_INVITE(0),
@@ -38,6 +40,7 @@ enum class DiscordPermission(val bitwiseOffset: Int) {
         get() = 1 shl bitwiseOffset
 
     companion object {
+        @JsName("fromRaw")
         fun fromRaw(bitwiseFlags: Int): Set<DiscordPermission> {
             val permissionSet: MutableSet<DiscordPermission> = mutableSetOf()
             for (permission in values()) {
@@ -51,6 +54,7 @@ enum class DiscordPermission(val bitwiseOffset: Int) {
 
 }
 
+@JsName("toRaw")
 fun Set<DiscordPermission>.toRaw(): Int {
     var bitwiseFlags = 0
     for (permission in this) {

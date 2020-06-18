@@ -1,5 +1,7 @@
 package org.cascadebot.common.permissions
 
+import kotlin.js.JsName
+
 /**
  * Security levels defined by Role IDs or User IDs, A level can be defined by an unlimited amount of roles
  * and users. Security levels are declared in ascending order.
@@ -13,6 +15,7 @@ object SecurityHandler {
      * @param level The level to get IDs for
      * @return The list of IDs authenticated against this level
      */
+    @JsName("getIds")
     fun getIds(levels: Map<SecurityLevel, Set<Long>>, level: SecurityLevel): Set<Long> {
         return levels[level] ?: setOf()
     }
@@ -24,6 +27,7 @@ object SecurityHandler {
      * @param minimumLevel   The minimum security level the user should have.
      * @return where level >= comparing level.
      */
+    @JsName("isAuthorised")
     fun isAuthorised(userLevel: SecurityLevel, minimumLevel: SecurityLevel): Boolean {
         return userLevel.isAuthorised(minimumLevel)
     }
@@ -36,6 +40,7 @@ object SecurityHandler {
      * @param roleIds The list of role IDs to check against, this will almost always be the roles from the official server.
      * @return The highest security level the user has access to or `null` if they do not have access to anything.
      */
+    @JsName("getLevelById")
     fun getLevelById(levels: Map<SecurityLevel, Set<Long>>, userId: Long, roleIds: Set<Long?>): SecurityLevel? {
         var highestLevel: SecurityLevel? = null
         for (securityLevel in SecurityLevel.values()) {
