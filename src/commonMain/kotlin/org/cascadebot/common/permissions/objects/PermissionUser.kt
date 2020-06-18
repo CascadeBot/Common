@@ -14,9 +14,21 @@ class PermissionUser : PermissionHolder() {
     }
 
     @Synchronized
+    @JsName("addGroupById")
+    fun addGroupById(id: String): Boolean {
+        return groups.add(id)
+    }
+
+    @Synchronized
     @JsName("removeGroup")
     fun removeGroup(group: PermissionGroup): Boolean {
         return groups.remove(group.id)
+    }
+
+    @Synchronized
+    @JsName("removeGroupById")
+    fun removeGroupById(id: String): Boolean {
+        return groups.remove(id)
     }
 
     val groupIds: Set<String>
