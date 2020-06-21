@@ -10,10 +10,8 @@ class PermissionGroup(val name: String) : PermissionHolder() {
     @Suppress("unused")
     private constructor() : this("")
 
-    // Base 55 with 5 chars gives 503284375 combinations, we should be ok for uniqueness
-    // This is normal alphanumeric with similar characters removed for less errors when inputting
     var id: String = generateRandomId()
-    private set
+        private set
 
     private val roleIds: MutableSet<Long> = mutableSetOf()
 
@@ -38,6 +36,8 @@ class PermissionGroup(val name: String) : PermissionHolder() {
 
     companion object {
 
+        // Base 55 with 5 chars gives 503284375 combinations, we should be ok for uniqueness
+        // This is normal alphanumeric with similar characters removed for less errors when inputting
         private const val characterPool = "abcdefghijkmnopqrstuvwxyzACDEFHJKLMNPRSTUVWXYZ123467890"
 
         private fun generateRandomId() = (1..5)
